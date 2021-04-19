@@ -236,7 +236,10 @@ uint32_t usart_sync_get_version(void)
 static int32_t usart_sync_write(struct io_descriptor *const io_descr, const uint8_t *const buf, const uint16_t length)
 {
 	uint32_t                      offset = 0;
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wcast-align"
 	struct usart_sync_descriptor *descr  = CONTAINER_OF(io_descr, struct usart_sync_descriptor, io);
+        #pragma GCC diagnostic pop
 
 	ASSERT(io_descr && buf && length);
 	while (!_usart_sync_is_ready_to_send(&descr->device))
