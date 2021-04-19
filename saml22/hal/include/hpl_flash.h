@@ -125,7 +125,7 @@ void _flash_write(struct _flash_device *const device, const uint32_t dst_addr, u
  * \param[in]  buffer        Pointer to buffer with data to write to flash
  * \param[in]  length        Number of bytes to write
  */
-void _flash_append(struct _flash_device *const device, const uint32_t dst_addr, uint8_t *buffer, uint32_t length);
+void _flash_append(struct _flash_device *const device, const uint32_t dst_addr, const uint8_t *buffer, uint32_t length);
 
 /** \brief Execute lock in the internal flash
  *  \param[in] device         The pointer to FLASH device instance

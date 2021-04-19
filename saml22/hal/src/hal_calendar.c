@@ -356,7 +356,10 @@ static void fill_alarm(struct calendar_descriptor *const calendar, struct calend
  */
 static int32_t calendar_add_new_alarm(struct list_descriptor *list, struct calendar_alarm *alarm)
 {
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wcast-align"
 	struct calendar_descriptor *calendar = CONTAINER_OF(list, struct calendar_descriptor, alarms);
+        #pragma GCC diagnostic pop
 	struct calendar_alarm *     head, *it, *prev = NULL;
 
 	/*get the head of alarms list*/
@@ -395,7 +398,10 @@ static int32_t calendar_add_new_alarm(struct list_descriptor *list, struct calen
  */
 static void calendar_alarm(struct calendar_dev *const dev)
 {
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wcast-align"
 	struct calendar_descriptor *calendar = CONTAINER_OF(dev, struct calendar_descriptor, device);
+        #pragma GCC diagnostic pop
 
 	struct calendar_alarm *head, *it, current_dt;
 
