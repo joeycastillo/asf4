@@ -198,35 +198,3 @@ uint32_t _get_cycles_for_ms(const uint16_t ms)
 {
 	return _get_cycles_for_ms_internal(ms, CONF_CPU_FREQUENCY, CPU_FREQ_POWER);
 }
-/**
- * \brief Initialize delay functionality
- */
-void _delay_init(void *const hw)
-{
-	(void)hw;
-}
-/**
- * \brief Delay loop to delay n number of cycles
- */
-void _delay_cycles(void *const hw, uint32_t cycles)
-{
-#ifndef _UNIT_TEST_
-	(void)hw;
-	(void)cycles;
-#if defined __GNUC__
-	__asm(".syntax unified\n"
-	      "__delay:\n"
-	      "subs r1, r1, #1\n"
-	      "bhi __delay\n"
-	      ".syntax divided");
-#elif defined __CC_ARM
-	__asm("__delay:\n"
-	      "subs cycles, cycles, #1\n"
-	      "bhi __delay\n");
-#elif defined __ICCARM__
-	__asm("__delay:\n"
-	      "subs r1, r1, #1\n"
-	      "bhi __delay\n");
-#endif
-#endif
-}
