@@ -9076,6 +9076,25 @@ static inline hri_rtc_bkup_reg_t hri_rtc_read_BKUP_reg(const void *const hw, uin
 	return ((Rtc *)hw)->MODE0.BKUP[index].reg;
 }
 
+// For some reason, SAM L22 uses a different name for these. Not sure if this is the best workaround or the best place for it.
+// - Joey Castillo 2/7/2021
+
+#ifndef hri_rtcmode0_read_FREQCORR_VALUE_bf
+#define hri_rtcmode0_read_FREQCORR_VALUE_bf hri_rtc_read_FREQCORR_VALUE_bf
+#endif
+
+#ifndef hri_rtcmode0_get_FREQCORR_SIGN_bit
+#define hri_rtcmode0_get_FREQCORR_SIGN_bit hri_rtc_get_FREQCORR_SIGN_bit
+#endif
+
+#ifndef hri_rtcmode0_write_FREQCORR_VALUE_bf
+#define hri_rtcmode0_write_FREQCORR_VALUE_bf hri_rtc_write_FREQCORR_VALUE_bf
+#endif
+
+#ifndef hri_rtcmode0_write_FREQCORR_SIGN_bit
+#define hri_rtcmode0_write_FREQCORR_SIGN_bit hri_rtc_write_FREQCORR_SIGN_bit
+#endif
+
 #ifdef __cplusplus
 }
 #endif
