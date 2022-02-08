@@ -207,6 +207,14 @@ void Reset_Handler(void)
 	pSrc      = (uint32_t *)&_sfixed;
 	SCB->VTOR = ((uint32_t)pSrc & SCB_VTOR_TBLOFF_Msk);
 
+#if defined(ID_USB)
+	USB->DEVICE.QOSCTRL.bit.CQOS = 2;
+	USB->DEVICE.QOSCTRL.bit.DQOS = 2;
+#endif
+	DMAC->QOSCTRL.bit.DQOS   = 2;
+	DMAC->QOSCTRL.bit.FQOS   = 2;
+	DMAC->QOSCTRL.bit.WRBQOS = 2;
+
 	/* Initialize the C library */
 	//__libc_init_array();
 
